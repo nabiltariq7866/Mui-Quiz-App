@@ -53,7 +53,7 @@ const EditAdminQuestion = () => {
 
   return (
     <div>
-      <div className="p-5 bg-[#1c1c1c] m-auto mt-7 w-full rounded">
+      <div className="p-5 bg-white m-auto mt-7 w-full rounded">
         <form
           onSubmit={handleSubmitQuestinAdmin}
           className="flex flex-wrap w-full items-start justify-between"

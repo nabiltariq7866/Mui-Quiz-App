@@ -22,8 +22,8 @@ import AppContext from "../../context/AuthContext";
 import QuizIcon from "@mui/icons-material/Quiz";
 import HomeIcon from "@mui/icons-material/Home";
 import BackupTableIcon from "@mui/icons-material/BackupTable";
-import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
-import ManageHistoryOutlinedIcon from '@mui/icons-material/ManageHistoryOutlined';
+import LibraryAddIcon from "@mui/icons-material/LibraryAdd";
+import ManageHistoryOutlinedIcon from "@mui/icons-material/ManageHistoryOutlined";
 
 const drawerWidth = 240;
 
@@ -88,12 +88,11 @@ export default function SideNev() {
   const navigate = useNavigate();
 
   const location = useLocation(); // Get current route
-  console.log(location)
-  const [activePath, setActivePath] = React.useState(location.pathname);
-  React.useEffect(() => {
-    setActivePath(location.pathname);
-  }, [location]);
-  const isActive = (path) => activePath === path;
+  const isActive = (path) => {
+    console.log(location.pathname);
+    console.log(path);
+    return location.pathname === path;
+  };
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -114,7 +113,16 @@ export default function SideNev() {
             <>
               <ListItem
                 disablePadding
-                sx={{ display: "block" }}
+                sx={[
+                  { display: "block" },
+                  isActive("/AdminDashboard")
+                    ? {
+                        backgroundColor: "#EDF4FB", // Active background color
+                      }
+                    : {
+                        backgroundColor: "transparent", // Default background color
+                      },
+                ]}
                 onClick={() => {
                   navigate("");
                 }}
@@ -167,7 +175,16 @@ export default function SideNev() {
               </ListItem>
               <ListItem
                 disablePadding
-                sx={{ display: "block" }}
+                sx={[
+                  { display: "block" },
+                  isActive("/AdminDashboard/AllQuestionAdmin")
+                    ? {
+                        backgroundColor: "#EDF4FB", // Active background color
+                      }
+                    : {
+                        backgroundColor: "transparent", // Default background color
+                      },
+                ]}
                 onClick={() => {
                   navigate("AllQuestionAdmin");
                 }}
@@ -220,7 +237,16 @@ export default function SideNev() {
               </ListItem>
               <ListItem
                 disablePadding
-                sx={{ display: "block" }}
+                sx={[
+                  { display: "block" },
+                  isActive("/AdminDashboard/CreateQuestion")
+                    ? {
+                        backgroundColor: "#EDF4FB", // Active background color
+                      }
+                    : {
+                        backgroundColor: "transparent", // Default background color
+                      },
+                ]}
                 onClick={() => {
                   navigate("CreateQuestion");
                 }}
@@ -273,7 +299,16 @@ export default function SideNev() {
               </ListItem>
               <ListItem
                 disablePadding
-                sx={{ display: "block" }}
+                sx={[
+                  { display: "block" },
+                  isActive("/AdminDashboard/AllQuizDetails")
+                    ? {
+                        backgroundColor: "#EDF4FB", // Active background color
+                      }
+                    : {
+                        backgroundColor: "transparent", // Default background color
+                      },
+                ]}
                 onClick={() => {
                   navigate("AllQuizDetails");
                 }}
@@ -329,7 +364,11 @@ export default function SideNev() {
             <>
               <ListItem
                 disablePadding
-                sx={{ display: "block" }}
+                sx={[
+                  { display: "block",
+                    backgroundColor:isActive("/EmployeeDashboard")? "#EDF4FB": "transparent"
+                   },
+                ]}
                 onClick={() => {
                   navigate("");
                 }}
@@ -382,7 +421,16 @@ export default function SideNev() {
               </ListItem>
               <ListItem
                 disablePadding
-                sx={{ display: "block" }}
+                sx={[
+                  { display: "block" },
+                  isActive("/EmployeeDashboard/TakeQuiz")
+                    ? {
+                        backgroundColor: "#EDF4FB", // Active background color
+                      }
+                    : {
+                        backgroundColor: "transparent", // Default background color
+                      },
+                ]}
                 onClick={() => {
                   navigate("TakeQuiz");
                 }}
@@ -435,7 +483,16 @@ export default function SideNev() {
               </ListItem>
               <ListItem
                 disablePadding
-                sx={{ display: "block",backgroundColor: isActive("FinalResult") ? "red" : "transparent", }}
+                sx={[
+                  { display: "block" },
+                  isActive("/EmployeeDashboard/FinalResult")
+                    ? {
+                        backgroundColor: "#EDF4FB", // Active background color
+                      }
+                    : {
+                        backgroundColor: "transparent", // Default background color
+                      },
+                ]}
                 onClick={() => {
                   navigate("FinalResult");
                 }}
@@ -487,7 +544,7 @@ export default function SideNev() {
                 </ListItemButton>
               </ListItem>
             </>
-          )}{" "}
+          )}
         </List>
       </Drawer>
     </Box>

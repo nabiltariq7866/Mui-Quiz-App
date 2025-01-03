@@ -10,11 +10,12 @@ import FinalResult from "./component/others/FinalResult";
 import AllQuizDetails from "./component/others/AllQuizDetails";
 import Home1 from "./component/others/Home1";
 import TakeQuiz from "./component/others/TakeQuiz";
+import Login from "./component/Auth/Login";
 const App = () => {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Home />,
+      element: <Login />,
     },
     {
       path: "/EmployeeDashboard",
@@ -24,7 +25,7 @@ const App = () => {
       children: [
         {
           index: true,
-          element: <Home1 />,
+          element: <Home />,
         },
         {
           path: "TakeQuiz",
@@ -49,7 +50,7 @@ const App = () => {
       children: [
         {
           index: true,
-          element: <Home1 />,
+          element: <Home />,
         },
         ,
         {

@@ -21,9 +21,8 @@ const AppContext = createContext({
   setUserHistoryIndex:()=>{},
   userHistoryIndex:"",
   setQuizData:()=>{},
-  setNavOpen:()=>{},
   quizData:[],
-  navOpen:[]
+  
 });
 function setLocalStorage(name, item) {
   localStorage.setItem(name, JSON.stringify(item));
@@ -49,7 +48,6 @@ export const AuthContext = ({ children }) => {
   );
   const [addInput, setaddInput] = useState([""]);
   const [editAddInput, setEditAddInput] = useState([""]);
-  const [navOpen, setNavOpen] = useState(getLocalStorage("NavOpen"))
   useEffect(() => {
     setLocalStorage("AdminQuestionCollectin", adminQuestionCollection);
   }, [adminQuestionCollection]);
@@ -64,10 +62,6 @@ export const AuthContext = ({ children }) => {
     setLocalStorage("userHistory", userHistoryData);
 
   }, [userHistoryData]);
-  useEffect(() => {
-    setLocalStorage("NavOpen", navOpen);
-
-  }, [navOpen]);
   useEffect(() => {
     setLocalStorage("quizData", quizData);
 
@@ -98,8 +92,6 @@ export const AuthContext = ({ children }) => {
     setUserHistoryIndex,
     quizData,
     setQuizData,
-    setNavOpen,
-    navOpen
   };
 
   return <AppContext.Provider value={passData}>{children}</AppContext.Provider>;

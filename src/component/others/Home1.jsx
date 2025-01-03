@@ -5,10 +5,10 @@ const Home1 = () => {
     <div className="w-[90%] context-behind p-4 rounded-md flex flex-col justify-between m-auto h-full ">
       <div className="w-full h-full flex items-center justify-between">
         <div className="w-1/2 mt-[-4rem]">
-          <h1 className="text-[#111] mb-5 text-2xl font-bold " style={{ fontFamily: 'Roboto, sans-serif' }}>
+          <h1 className="text-[#111] mb-5 text-2xl font-bold font-sans" >
             "Quiz App: Test Your Knowledge, Challenge Your Mind!"
           </h1>
-          <p className="text-[#111]  text-lg" >
+          <p className="text-[#111]  text-lg font-sans" >
             Welcome to Quiz App, the ultimate quiz app designed to make learning
             fun, engaging, and interactive. With a sleek design, customizable
             quizzes, and real-time leaderboards, this app transforms learning

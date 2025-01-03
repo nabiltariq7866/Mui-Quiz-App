@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import AppContext from "../../context/AuthContext";
 
-const QuestionOption = ({ data,edit,setChangeAns }) => {
+const QuestionOption = ({ data, edit, setChangeAns }) => {
   const context = useContext(AppContext);
-  const [localCorrectAnswer, setLocalCorrectAnswer] = useState(data?data.correctAnswer:null)
+  const [localCorrectAnswer, setLocalCorrectAnswer] = useState(
+    data ? data.correctAnswer : null
+  );
   useEffect(() => {
     if (data && data.option) {
       const correctIndex = data.option.indexOf(data.correctAnswer);
@@ -14,17 +16,21 @@ const QuestionOption = ({ data,edit,setChangeAns }) => {
     context.setaddInput((prev) => [...prev, ""]);
   }
   function handleCorrectAnswerChange(index) {
-    setLocalCorrectAnswer(index); 
-    {setChangeAns&&setChangeAns(index)}
-{  !edit && context.setCorrectAnswer(index)} 
+    setLocalCorrectAnswer(index);
+    {
+      setChangeAns && setChangeAns(index);
+    }
+    {
+      !edit && context.setCorrectAnswer(index);
+    }
   }
   function handleDeleteOption(index) {
     const newAddInput = context.addInput.filter((_, i) => i !== index);
     context.setaddInput(newAddInput);
     if (index === context.correctAnswer) {
-      context.setCorrectAnswer(null); 
+      context.setCorrectAnswer(null);
     } else if (index < context.correctAnswer) {
-      context.setCorrectAnswer((prev) => prev - 1); 
+      context.setCorrectAnswer((prev) => prev - 1);
     }
   }
   function handleOptionChange(e, index) {
@@ -34,12 +40,12 @@ const QuestionOption = ({ data,edit,setChangeAns }) => {
   }
 
   return (
-    <div className="bg-black rounded-md w-2/3 m-auto  mt-3 p-4 ">
+    <div className="bg-[#43b5a0] rounded-md w-2/3 m-auto  mt-3 p-4 ">
       <div className="flex items-center justify-end mb-2">
         <button
           type="button"
           onClick={handlePlusButton}
-          className="bg-[#d92732] text-white w-[30px] flex items-center justify-center h-[30px] text-lg font-medium rounded-[50%]"
+          className="bg-white text-[#43b5a0] w-[30px] flex items-center justify-center h-[30px] text-lg font-medium rounded-[50%]"
         >
           +
         </button>
@@ -47,17 +53,17 @@ const QuestionOption = ({ data,edit,setChangeAns }) => {
       {context.addInput.map((item, index) => {
         return (
           <div
-            className="flex gap-3 mb-2 items-center justify-center"
+            className="flex text-white gap-3 mb-2 items-center justify-center"
             key={index}
           >
             <p>{index + 1}</p>
             <input
               type="text"
-             value={item || ""}
+              value={item || ""}
               name="option"
               onChange={(e) => handleOptionChange(e, index)}
-              className="bg-gray-800 w-3/4 p-2 rounded-md"
-              placeholder="Question option.."
+              className="bg-[#43b5a0] placeholder:text-[#89B9E8] w-3/4 p-2 rounded-md outline-none"
+              placeholder="Question option..."
               required
             />
             <label className="flex items-center justify-center gap-2">
@@ -74,7 +80,7 @@ const QuestionOption = ({ data,edit,setChangeAns }) => {
             </label>
             <button
               type="button"
-              className="bg-[#d92732] text-white h-[25px]  px-1 rounded-sm text-[12px] leading-none "
+              className="bg-white text-[#43b5a0] h-[25px]  px-1 rounded-sm text-[12px] leading-none "
               onClick={() => handleDeleteOption(index)}
             >
               Delete
@@ -82,7 +88,6 @@ const QuestionOption = ({ data,edit,setChangeAns }) => {
           </div>
         );
       })}
-  
     </div>
   );
 };

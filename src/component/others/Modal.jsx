@@ -26,7 +26,7 @@ export default function Modal({
 
         context.setIsOpen(false);
       }}
-      className={`fixed inset-0 flex items-center justify-center bg-black/40 px-4 ${
+      className={`fixed inset-0 z-10 flex items-center justify-center bg-black/40 px-4 ${
         context.isOpen ? "" : "hidden"
       }`}
     >

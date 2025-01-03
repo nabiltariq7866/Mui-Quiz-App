@@ -3,8 +3,8 @@ import AllTask from "./AllTask";
 
 const SelectedQuizdetail = ({ selectedQuiz }) => {
   return (
-    <div className="h-[600px] w-[90vw]  p-4 rounded-md overflow-y-auto  login-bg">
-      <h1 className="text-[30px] font-semibold text-[#a8eb12] underline">
+    <div className="h-[90vh] w-[1423px]  mt-16  p-4 rounded-3xl overflow-y-auto bg-white">
+      <h1 className="text-[30px] font-semibold text-[#43b5a0] underline   ">
         Score:{selectedQuiz.scoreCard}
       </h1>
       <div className="flex justify-between flex-wrap">
